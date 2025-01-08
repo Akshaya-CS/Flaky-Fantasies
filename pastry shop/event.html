@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flaky Fantasies - Events</title>
+    <style>
+        body {
+            background-color: #f2e8dc;
+            font-family: 'Lucida Sans', sans-serif;
+        }
+        header {
+            padding: 40px;
+            text-align: center;
+            font-size: 30px;
+            font-style: oblique;
+        }
+        header h1 {
+            margin: 0;
+            color: #5b4a3f;
+            text-transform: capitalize;
+        }
+        nav {
+            background-color: #5b4a3f;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav a {
+            color: #fff;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        nav a:hover {
+            background-color: chocolate;
+            border: #555;
+        }
+        .featured-image {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .featured-image img {
+            max-width: 90%;
+            height: 650px;
+            width: 50%;
+            border-radius: 8px;
+            border: 5px solid #5b4a3f;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .hero {
+            position: relative;
+            height: 100vh;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.0)), url('background1.jpg'); /* Add your image URL */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+        .hero {       /* this particular is for half side transparency */
+          position: relative;
+          height: 100vh;
+          background-image: linear-gradient(to left, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.8)), url('background1.jpg'); /* Add your image URL */
+          background-size: cover;
+          background-position: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          color: #fff;
+}
+
+        .hero h2 {
+            margin: 10px 0;
+        }
+        .event-section {
+            margin: 20px auto;
+            width: 80%;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        .form-group label {
+            display: inline-block;
+        }
+        .submit-btn {
+            background-color: #5b4a3f;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .submit-btn:hover {
+            background-color: chocolate;
+        }
+        .total-display {
+            font-size: 24px;
+            text-align: center;
+            margin-top: 20px;
+            color: #5b4a3f;
+        }
+        .item-varieties {
+            display: none; /* Hide by default */
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #fff3e0;
+        }
+        .item-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Book Pastries for Your Event</h1>
+</header>
+
+<nav>
+    <a href="index.html">Home</a>
+    <a href="menu.html">Menu</a>
+    <a href="shop.html">Shop</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact Us</a>
+</nav>
+
+<div class="featured-image">
+    <img src="dj.jpg" alt="Featured image"> <!-- Replace with your image URL -->
+</div>
+
+<div class="hero">
+    <h2>Delicious Pastries for Every Occasion</h2>
+    <p>Choose from our wide range of cakes, cupcakes, desserts, and more.</p>
+</div>
+
+<div class="event-section">
+    <form id="eventForm">
+        <div class="form-group">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+
+        <div class="form-group">
+            <label for="event-details">Event Details:</label>
+            <textarea id="event-details" name="event-details" rows="4" placeholder="Describe your event..."></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Select Items for Your Event:</label>
+            <input type="checkbox" id="cake" name="item" value="cake" data-price="50" onclick="toggleVarieties('cakeVarieties')"> Cakes ($50 each)
+            <div class="item-varieties" id="cakeVarieties">
+                <h4>Choose Your Cake Varieties:</h4>
+                <input type="checkbox" value="Chocolate Cake" data-price="50"> Chocolate Cake ($50)<br>
+                <input type="checkbox" value="Vanilla Cake" data-price="50"> Vanilla Cake ($50)<br>
+            </div>
+
+            <input type="checkbox" id="cupcake" name="item" value="cupcake" data-price="30" onclick="toggleVarieties('cupcakeVarieties')"> Cupcakes ($30 per dozen)
+            <div class="item-varieties" id="cupcakeVarieties">
+                <h4>Choose Your Cupcake Varieties:</h4>
+                <input type="checkbox" value="Chocolate Cupcake" data-price="30"> Chocolate Cupcake ($30)<br>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="quantity">Quantity (for each selected item):</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1">
+        </div>
+
+        <button type="button" class="submit-btn" onclick="calculateTotal()">Calculate Total</button>
+
+        <div class="total-display" id="totalAmount">Total: $0</div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
+
+<script>
+    function toggleVarieties(varietyId) {
+        const varietySection = document.getElementById(varietyId);
+        varietySection.style.display = varietySection.style.display === 'none' || varietySection.style.display === '' ? 'block' : 'none';
+    }
+
+    function calculateTotal() {
+        const items = document.querySelectorAll('input[name="item"]:checked');
+        const quantity = Number(document.getElementById('quantity').value) || 1;
+        let total = 0;
+
+        items.forEach(item => {
+            const price = Number(item.getAttribute('data-price'));
+            total += price * quantity;
+
+            const selectedVarieties = document.querySelectorAll(`#${item.value}Varieties input:checked`);
+            selectedVarieties.forEach(variety => {
+                total += Number(variety.getAttribute('data-price')) * quantity;
+            });
+        });
+
+        document.getElementById('totalAmount').innerText = "Total: $" + total;
+    }
+
+    document.getElementById('eventForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        alert('Thank you! Your event booking has been submitted.');
+        this.reset();
+        document.getElementById('totalAmount').innerText = "Total: $0";
+    });
+</script>
+
+</body>
+</html>
